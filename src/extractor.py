@@ -33,3 +33,8 @@ def extract_events() -> Generator[RadonMeasurementEvent, None, None]:
             next(reader)  # skip headers
             for row in reader:
                 yield _extract_event(row, station)
+
+
+def extract_stations() -> Generator[str, None, None]:
+    for file in os.listdir(_CSV_LOCATION):
+        yield file.replace('.csv', '')

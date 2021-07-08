@@ -1,19 +1,10 @@
 import datetime
-import os
 import random
 
-from config import CONFIG as CFG
 from event import RadonMeasurementPayload, RadonMeasurementEvent
+from extractor import extract_stations
 
-_CSV_LOCATION = CFG.csv_location if os.path.isdir(CFG.csv_location) else os.path.join(os.getcwd(), CFG.csv_location)
-
-
-def _get_stations():
-    for file in os.listdir(_CSV_LOCATION):
-        yield file.replace('.csv', '')
-
-
-_stations = list(_get_stations())
+_stations = list(extract_stations())
 
 
 def _timestamp():
