@@ -7,15 +7,11 @@ from extractor import extract_stations
 _stations = list(extract_stations())
 
 
-def _timestamp():
-    return datetime.datetime.utcnow().timestamp()
-
-
 def _payload():
     station = random.choice(_stations)
     value = random.uniform(0, 400)
     pressure = random.uniform(99, 102)
-    timestamp = _timestamp()
+    timestamp = datetime.datetime.utcnow().timestamp()
     return RadonMeasurementPayload(station, value, pressure, timestamp)
 
 
