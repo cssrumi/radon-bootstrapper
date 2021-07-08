@@ -1,7 +1,7 @@
 from time import sleep
 
 from extractor import extract_events
-from generate import generate_event
+from generator import generate_event
 from publisher import publish
 
 
@@ -10,7 +10,7 @@ def boostrap():
         publish(event)
 
 
-def mock_random_events():
+def publish_random_events():
     while True:
         event = generate_event()
         publish(event)
@@ -19,7 +19,7 @@ def mock_random_events():
 
 def main():
     boostrap()
-    mock_random_events()
+    publish_random_events()
 
 
 if __name__ == '__main__':
